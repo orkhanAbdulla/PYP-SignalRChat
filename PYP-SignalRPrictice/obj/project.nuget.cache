@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7w6wezZ31cEbX+CX+csQllDDJIqh75+Ht+sy3DHL1KQ9kQDliLHmpNsxi2rdeHjCKn5L/uROp3Gd4E237sAyig==",
+  "dgSpecHash": "HE5h2rLBZOmlev74SLSZvnusZOkhZZtAiauDCw0WTReCwsPB7Mkm/4XAUXNrIzt5iyd173uR3rmc3Du6ygNcwQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hp\\Desktop\\PYP\\PYP-SignalRPrictice\\PYP-SignalRPrictice\\PYP-SignalRPrictice.csproj",
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\PYP-SignalRChat\\PYP-SignalRPrictice\\PYP-SignalRPrictice.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

@@ -3,6 +3,8 @@ using PYP_SignalRPrictice.DAL;
 using PYP_SignalRPrictice.HUBs;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSignalR();
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = "CodeAcademy.Session";
@@ -16,7 +18,7 @@ builder.Services.AddSession(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ChatContext>(option=>option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
-builder.Services.AddSignalR();
+
 
 var app = builder.Build();
 

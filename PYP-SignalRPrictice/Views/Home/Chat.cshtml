@@ -8,9 +8,13 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="container">
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-4"><input type="hidden" id="singleUserId" name="singleUserId" value="" /></div>
+                </div>
                 <div class="row">
                     <div class="col-2">Message</div>
-                    <div class="col-4"><input type="text" id="messageInput"/></div>
+                    <div class="col-4"><input type="text" id="messageInput" /></div>
                 </div>
                 <div class="row">&nbsp;</div>
                 <div class="row">
@@ -34,31 +38,14 @@
             <ul class="list-group">
                 @foreach (var user in Model)
                 {
-                    <li class="list-group-item user-item"><span id="@user.Id" class=@(user.ConnectionId==null?"bg-offline":"bg-online") style="width:15px;height:15px; border-radius:50%; display:inline-block; "></span>@user.Username</li>
+                    <li class="list-group-item user-item"><span id="@user.Id" class=@(user.ConnectionId==null?
+                          "bg-offline":"bg-online") style="width:15px;height:15px; border-radius:50%; display:inline-block; "></span>@user.Username
+                    </li>
                 }
 
             </ul>
         </div>
     </div>
 </div>
-
-@section Scripts{
-    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
-    <script>
-        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-        connection.start()
-        document.getElementById("sendButton").addEventListener("click", function () {
-            var message = document.getElementById("messageInput").value;
-            connection.invoke("SendMessage",message).catch(function (err) {
-                return console.error(err.toString());
-            });
-            
-        });
-        //connection.on("ReceiveMessage", function (user, message, data) {
-        //    var li = document.createElement("li");
-        //    li.innerHTML = user + ":" + message + " " + data
-        //    document.getElementById("messagesList").appendChild(li);
-        //})
-     
-    </script>
-}
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/site.js"></script>

@@ -58,7 +58,7 @@ namespace PYP_SignalRPrictice.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginVM loginVM)
         {
-            User user = _chatContext.Users.FirstOrDefault(x => x.Username == loginVM.Username  );
+            User user = _chatContext.Users.FirstOrDefault(x => x.Username == loginVM.Username);
             if (user == null && !BCrypt.Net.BCrypt.Verify(loginVM.Password, user.Password))
             {
                 ModelState.AddModelError("", "UserName or Password is incorrect");
@@ -69,7 +69,7 @@ namespace PYP_SignalRPrictice.Controllers
             {
                 HttpContext.Session.Remove("Identity");
             }
-            HttpContext.Session.SetString("Identity", JsonSerializer.Serialize(user.Username));
+            HttpContext.Session.SetString("Identity", user.Username);
             return RedirectToAction(nameof(Chat), "Home");
 
         }
@@ -80,13 +80,18 @@ namespace PYP_SignalRPrictice.Controllers
         }
         public IActionResult Chat()
         {
-            var models = _chatContext.Users.ToList();
-            return View(models);
+            if (HttpContext.Session.GetString("Identity") != null)
+            {
+                var models = _chatContext.Users.ToList();
+                return View(models);
+            }
+            return RedirectToAction(nameof(Index));
         }
 
 
         public IActionResult Privacy()
         {
+           
             return View();
         }
 
